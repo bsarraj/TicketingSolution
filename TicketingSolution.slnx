@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="TicketingSolution.Core.Test/TicketingSolution.Core.Test.csproj" />
+  <Project Path="TicketingSolution.Core/TicketingSolution.Core.csproj" Id="c31da251-7f60-41f3-9bf6-6c10614c673c" />
 </Solution>

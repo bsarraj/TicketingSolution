@@ -1,6 +1,6 @@
-﻿namespace TicketingSolution.Core.Test
+﻿namespace TicketingSolution.Core
 {
-    internal class TicketBookingRequest
+    public class TicketBookingRequest
     {
         public string Name { get; set; }
         public string Family { get; set; }

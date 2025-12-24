@@ -1,15 +1,15 @@
 ﻿
 
 
-namespace TicketingSolution.Core.Test
+namespace TicketingSolution.Core
 {
-    internal class TicketBookingRequestHandler
+    public class TicketBookingRequestHandler
     {
         public TicketBookingRequestHandler()
         {
         }
 
-        internal ServiceBookingResult BookService(TicketBookingRequest bookingRequest)
+        public ServiceBookingResult BookService(TicketBookingRequest bookingRequest)
         {
             
             return new ServiceBookingResult() 
