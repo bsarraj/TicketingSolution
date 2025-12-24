@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shouldly;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -22,8 +23,11 @@ namespace TicketingSolution.Core.Test
 
             ServiceBookingResult result = Handler.BookService(BookingRequest);
 
-            
-            Assert.NotNull(result);
+
+            result.ShouldNotBeNull();
+            result.Name.ShouldBe(BookingRequest.Name);
+            result.Family.ShouldBe(BookingRequest.Family);
+            result.Email.ShouldBe(BookingRequest.Email);
 
         }
     }
