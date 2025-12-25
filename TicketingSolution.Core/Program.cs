@@ -4,11 +4,16 @@ using System.Text;
 
 namespace TicketingSolution.Core
 {
-    public class Program
+    public static class Program
     {
         public static void Main()
-            {
+        {
+            DateTime now454 = DateTime.Now;
 
+            if ("now454" == nameof(now454))
+            {
+                Console.WriteLine("true");
             }
+        }
     }
 }

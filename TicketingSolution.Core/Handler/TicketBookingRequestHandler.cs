@@ -1,7 +1,6 @@
-﻿
+﻿using TicketingSolution.Core.Model;
 
-
-namespace TicketingSolution.Core
+namespace TicketingSolution.Core.Handler
 {
     public class TicketBookingRequestHandler
     {
@@ -11,7 +10,10 @@ namespace TicketingSolution.Core
 
         public ServiceBookingResult BookService(TicketBookingRequest bookingRequest)
         {
-            
+            if (bookingRequest is null)
+            {
+                throw new ArgumentNullException(nameof(bookingRequest));
+            }
             return new ServiceBookingResult() 
             {
                 Name = bookingRequest.Name,
