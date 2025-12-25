@@ -1,11 +1,16 @@
-﻿using TicketingSolution.Core.Model;
+﻿using TicketingSolution.Core.DataServices;
+using TicketingSolution.Core.Domaint;
+using TicketingSolution.Core.Model;
 
 namespace TicketingSolution.Core.Handler
 {
     public class TicketBookingRequestHandler
     {
-        public TicketBookingRequestHandler()
+        private readonly ITicketBookingService _ticketBookingService;
+
+        public TicketBookingRequestHandler(ITicketBookingService ticketBookingService)
         {
+            this._ticketBookingService = ticketBookingService;
         }
 
         public ServiceBookingResult BookService(TicketBookingRequest bookingRequest)
@@ -14,6 +19,14 @@ namespace TicketingSolution.Core.Handler
             {
                 throw new ArgumentNullException(nameof(bookingRequest));
             }
+
+            _ticketBookingService.Save(new TicketBooking()
+            {
+                Name = bookingRequest.Name,
+                Family = bookingRequest.Family,
+                Email = bookingRequest.Email
+            });
+
             return new ServiceBookingResult() 
             {
                 Name = bookingRequest.Name,
