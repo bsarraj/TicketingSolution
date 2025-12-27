@@ -19,8 +19,14 @@ namespace TicketingSolution.Core.Handler
             {
                 throw new ArgumentNullException(nameof(bookingRequest));
             }
-
-            _ticketBookingService.Save(CreateTicketBookingObject<TicketBooking>(bookingRequest));
+            var availabeTickets = _ticketBookingService.GetAvailabelTickets(bookingRequest.Date);
+            if (availabeTickets.Any())
+            {
+                var Ticket = availabeTickets.First();
+                var TicketBooking = CreateTicketBookingObject<TicketBooking>(bookingRequest);
+                TicketBooking.TicketID = Ticket.Id;
+                _ticketBookingService.Save(TicketBooking);
+            }
 
             return CreateTicketBookingObject<ServiceBookingResult>(bookingRequest);
         }
