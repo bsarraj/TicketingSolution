@@ -9,6 +9,7 @@ using TicketingSolution.Core.Handler;
 using TicketingSolution.Core.Model;
 using Moq;
 using TicketingSolution.Core.Domaint;
+using TicketingSolution.Core.Enums;
 
 namespace TicketingSolution.Core.Test
 {
@@ -83,9 +84,20 @@ namespace TicketingSolution.Core.Test
             _availlableTickets.Clear();
             _handler.BookService(_request);
             _ticketBookingServiceMock.Verify(x => x.Save(It.IsAny<TicketBooking>()), Times.Never);
+        }
 
+        [Theory]
+        [InlineData(BoockingResultFlag.Failure, false)]
+        [InlineData(BoockingResultFlag.Success, true)]
+        public void Should_Return_SuccessOrFailure_Flag_In_Result(BoockingResultFlag boockingSuccessFlag, bool isAvailable)
+        {
+            if (!isAvailable)
+            {
+                _availlableTickets.Clear();
+            }
 
-
+            var result = _handler.BookService(_request);
+            boockingSuccessFlag.ShouldBe(result.Flag);
         }
     }
 }

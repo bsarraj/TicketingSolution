@@ -20,15 +20,18 @@ namespace TicketingSolution.Core.Handler
                 throw new ArgumentNullException(nameof(bookingRequest));
             }
             var availabeTickets = _ticketBookingService.GetAvailabelTickets(bookingRequest.Date);
+            var result = CreateTicketBookingObject<ServiceBookingResult>(bookingRequest);
+            result.Flag = Enums.BoockingResultFlag.Failure;
             if (availabeTickets.Any())
             {
                 var Ticket = availabeTickets.First();
                 var TicketBooking = CreateTicketBookingObject<TicketBooking>(bookingRequest);
                 TicketBooking.TicketID = Ticket.Id;
                 _ticketBookingService.Save(TicketBooking);
+                result.Flag = Enums.BoockingResultFlag.Success;
             }
 
-            return CreateTicketBookingObject<ServiceBookingResult>(bookingRequest);
+            return result;
         }
 
         public static TTicketBooking CreateTicketBookingObject<TTicketBooking>(TicketBookingRequest bookingRequest) where TTicketBooking : ServiceBookingBase, new()
