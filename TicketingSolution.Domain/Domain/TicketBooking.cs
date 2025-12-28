@@ -1,6 +1,6 @@
-﻿using TicketingSolution.Core.Model;
+﻿using TicketingSolution.Domain.BaseModels;
 
-namespace TicketingSolution.Core.Domaint
+namespace TicketingSolution.Domain.Domain
 {
     public class TicketBooking : ServiceBookingBase
     {

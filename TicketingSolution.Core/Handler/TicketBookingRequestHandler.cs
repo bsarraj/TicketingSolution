@@ -1,6 +1,7 @@
 ﻿using TicketingSolution.Core.DataServices;
-using TicketingSolution.Core.Domaint;
 using TicketingSolution.Core.Model;
+using TicketingSolution.Domain.BaseModels;
+using TicketingSolution.Domain.Domain;
 
 namespace TicketingSolution.Core.Handler
 {

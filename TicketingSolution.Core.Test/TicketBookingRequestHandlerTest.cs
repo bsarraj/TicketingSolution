@@ -8,8 +8,8 @@ using TicketingSolution.Core.DataServices;
 using TicketingSolution.Core.Handler;
 using TicketingSolution.Core.Model;
 using Moq;
-using TicketingSolution.Core.Domaint;
 using TicketingSolution.Core.Enums;
+using TicketingSolution.Domain.Domain;
 
 namespace TicketingSolution.Core.Test
 {
