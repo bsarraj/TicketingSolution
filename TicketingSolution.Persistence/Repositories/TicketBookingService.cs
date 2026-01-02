@@ -19,7 +19,9 @@ namespace TicketingSolution.Persistence.Repositories
 
         public IEnumerable<Ticket> GetAvailableTickets(DateTime date)
         {
-            throw new NotImplementedException();
+            return _context.Tickets
+                .Where(t => !t.TicketBookings.Any(b => b.Date == date))
+                .ToList();
         }
 
         public void Save(TicketBooking ticketBooking)

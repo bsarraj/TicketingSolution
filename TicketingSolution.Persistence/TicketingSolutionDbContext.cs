@@ -21,12 +21,13 @@ namespace TicketingSolution.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Ticket>().HasData(
-                new Ticket { Id = 1, Name = "To Shiraz" },
-                new Ticket { Id = 2, Name = "To Esfahan" },
-                new Ticket { Id = 3, Name = "To Mashhad" }
-                );
+            modelBuilder.Entity<TicketBooking>().HasKey(tb => tb.TicketID);
+            modelBuilder.Entity<TicketBooking>()
+                .HasOne<Ticket>(tb => tb.Ticket)
+                .WithMany(t => t.TicketBookings)
+                .HasForeignKey(tb => tb.TicketID);
         }
+        
     }
 }
 

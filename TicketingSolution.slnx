@@ -2,6 +2,6 @@
   <Project Path="TicketingSolution.Core.Test/TicketingSolution.Core.Test.csproj" />
   <Project Path="TicketingSolution.Core/TicketingSolution.Core.csproj" Id="c31da251-7f60-41f3-9bf6-6c10614c673c" />
   <Project Path="TicketingSolution.Domain/TicketingSolution.Domain.csproj" Id="48b27e89-006c-4a6e-902c-5adbfab29997" />
-  <Project Path="TicketingSolution.Persistence.Test/TicketingSolution.Persistence.Test.csproj" Id="e85a5762-7617-4db6-8bf7-1f75e3d3bf7b" />
+  <Project Path="TicketingSolution.Persistence.Test/TicketingSolution.Persistence.Test.csproj" Id="1822b513-358a-491d-b025-c0cf51854671" />
   <Project Path="TicketingSolution.Persistence/TicketingSolution.Persistence.csproj" Id="7d2549d6-288c-4ff3-a801-7c25f682418c" />
 </Solution>

@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+using TicketingSolution.Domain.Domain;
 using TicketingSolution.Persistence;
 using TicketingSolution.Persistence.Repositories;
-using TicketingSolution.Domain.Domain;
 
 namespace TicketingSolution.Persistence.Test
 {
@@ -17,7 +13,7 @@ namespace TicketingSolution.Persistence.Test
             var date = new DateTime(2026, 1, 1);
 
             var dbOptions = new DbContextOptionsBuilder<TicketingSolutionDbContext>()
-                .UseInMemoryDatabase(databaseName: "AvailableTicketTest")
+                .UseInMemoryDatabase(databaseName: "AvailableTicketTest", b => b.EnableNullChecks(false))
                 .Options;
 
             using var context = new TicketingSolutionDbContext(dbOptions);
@@ -25,9 +21,8 @@ namespace TicketingSolution.Persistence.Test
             context.Add(new Ticket { Id = 2, Name = "Ticket 2" });
             context.Add(new Ticket { Id = 3, Name = "Ticket 3" });
 
-            context.Add(new TicketBooking { TicketID = 1, Name = "T1", Family = "T1", Email = "T1@t1.com", Date = date });
-
-            context.Add(new TicketBooking { TicketID = 2, Name = "T2", Family = "T2", Email = "T2@t2.com", Date = date.AddDays(-1)});
+            context.Add(new TicketBooking { TicketID = 1, Date = date });
+            context.Add(new TicketBooking { TicketID = 2, Date = date.AddDays(-1)});
 
             context.SaveChanges();
 
