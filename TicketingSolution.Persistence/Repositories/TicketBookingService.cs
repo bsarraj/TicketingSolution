@@ -8,7 +8,16 @@ namespace TicketingSolution.Persistence.Repositories
 {
     public class TicketBookingService : ITicketBookingService
     {
-        public IEnumerable<Ticket> GetAvailabelTickets(DateTime date)
+        private readonly TicketingSolutionDbContext _context;
+
+        public TicketBookingService(TicketingSolutionDbContext context)
+        {
+            this._context = context;
+        }
+
+        
+
+        public IEnumerable<Ticket> GetAvailableTickets(DateTime date)
         {
             throw new NotImplementedException();
         }

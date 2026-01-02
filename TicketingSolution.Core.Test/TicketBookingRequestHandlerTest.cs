@@ -32,7 +32,7 @@ namespace TicketingSolution.Core.Test
             };
             _availlableTickets = new List<Ticket>() { new Ticket() { Id = 1 } };
             _ticketBookingServiceMock = new Mock<ITicketBookingService>();
-            _ticketBookingServiceMock.Setup(q => q.GetAvailabelTickets(_request.Date))
+            _ticketBookingServiceMock.Setup(q => q.GetAvailableTickets(_request.Date))
                 .Returns(_availlableTickets);
             _handler = new TicketBookingRequestHandler(_ticketBookingServiceMock.Object);
 

@@ -9,7 +9,7 @@ namespace TicketingSolution.Core.DataServices
     {
         void Save(TicketBooking ticketBooking);
 
-        IEnumerable<Ticket> GetAvailabelTickets(DateTime date);
+        IEnumerable<Ticket> GetAvailableTickets(DateTime date);
 
     }
 }

@@ -20,7 +20,7 @@ namespace TicketingSolution.Core.Handler
             {
                 throw new ArgumentNullException(nameof(bookingRequest));
             }
-            var availabeTickets = _ticketBookingService.GetAvailabelTickets(bookingRequest.Date);
+            var availabeTickets = _ticketBookingService.GetAvailableTickets(bookingRequest.Date);
             var result = CreateTicketBookingObject<ServiceBookingResult>(bookingRequest);
             result.Flag = Enums.BoockingResultFlag.Failure;
             if (availabeTickets.Any())
