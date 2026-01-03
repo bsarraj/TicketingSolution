@@ -1,4 +1,6 @@
 <Solution>
+  <Project Path="TicketingSolution.API.Test/TicketingSolution.API.Test.csproj" Id="633ff5ce-5da2-47ab-9d93-215cac6ff822" />
+  <Project Path="TicketingSolution.API/TicketingSolution.API.csproj" Id="d083a152-bfe8-46cd-8462-2653a0932cb6" />
   <Project Path="TicketingSolution.Core.Test/TicketingSolution.Core.Test.csproj" />
   <Project Path="TicketingSolution.Core/TicketingSolution.Core.csproj" Id="c31da251-7f60-41f3-9bf6-6c10614c673c" />
   <Project Path="TicketingSolution.Domain/TicketingSolution.Domain.csproj" Id="48b27e89-006c-4a6e-902c-5adbfab29997" />
