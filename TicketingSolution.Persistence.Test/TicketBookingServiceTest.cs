@@ -8,6 +8,27 @@ namespace TicketingSolution.Persistence.Test
     public class TicketBookingServiceTest
     {
         [Fact]
+        public void Should_Save_Ticket_Booking()
+        {
+            // Arrange
+            var dbOptions = new DbContextOptionsBuilder<TicketingSolutionDbContext>()
+                .UseInMemoryDatabase(databaseName: "ShouldSaveTest", b => b.EnableNullChecks(false))
+                .Options;
+            var ticketBooking = new TicketBooking() { TicketID = 1, Date = new DateTime(2022, 06, 01)};
+
+            // Act
+            using var context = new TicketingSolutionDbContext(dbOptions);
+            var ticketBookingService = new TicketBookingService(context);
+            ticketBookingService.Save(ticketBooking);
+
+            // Assert
+
+            Assert.NotNull(ticketBooking);
+            Assert.Equal(1, ticketBooking.TicketID);
+            Assert.Equal(new DateTime(2022, 06, 01), ticketBooking.Date);
+        }
+
+        [Fact]
         public void Should_Return_Available_Services()
         {
             var date = new DateTime(2026, 1, 1);
