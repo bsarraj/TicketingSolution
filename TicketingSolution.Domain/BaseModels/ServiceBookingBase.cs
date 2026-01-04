@@ -1,10 +1,30 @@
-﻿namespace TicketingSolution.Domain.BaseModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TicketingSolution.Domain.BaseModels
 {
     public abstract class ServiceBookingBase
     {
+        [Required]
+        [StringLength(80)]
         public string Name { get; set; }
         public string Family { get; set; }
-        public string Email { get; set; } 
+
+        [Required]
+        [StringLength(80)]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (Date < DateTime.Now.Date)
+            {
+                yield return new ValidationResult(
+                    "The date cannot be in the past.",
+                    new[] { nameof(Date) });
+            }
+        }
     }
 }

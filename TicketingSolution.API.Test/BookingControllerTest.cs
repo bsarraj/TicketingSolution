@@ -47,8 +47,6 @@ namespace TicketingSolution.API.Test
             result.ShouldBeOfType(expectedActionResultType);
             _ticketBookingRequestHandler.Verify(x => x.BookService(_request), Times.Exactly(expectedMethodCalls));
 
-
-
         }
 
 

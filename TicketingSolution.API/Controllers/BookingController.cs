@@ -18,7 +18,17 @@ namespace TicketingSolution.API.Controllers
 
         public async Task<IActionResult> Book(TicketBookingRequest request)
         {
-            throw new NotImplementedException();
+            if (ModelState.IsValid)
+            {
+                var result = _ticketBookingRequestHandler.BookService(request);
+                if (result.Flag == Core.Enums.BoockingResultFlag.Success)
+                {
+                    return Ok(result);
+                }
+                ModelState.AddModelError(nameof(TicketBookingRequest.Date), "No Ticket Available For Given Date");
+            }
+
+            return BadRequest(ModelState);
         }
     }
 }
